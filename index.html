@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pratham Suthar – Portfolio</title>
+    <meta name="description" content="Portfolio of Pratham Suthar – Robotics Engineering student blending robotics, manufacturing and global experience." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg:#0b0c0f; /* background */
+            --card:#111319; /* card bg */
+            --muted:#1a1d25; /* subtle surfaces */
+            --text:#e8ebf1; /* main text */
+            --text-muted:#a7b0c0; /* muted text */
+            --brand:#6ee7b7; /* mint */
+            --brand-2:#60a5fa; /* blue */
+            --stroke:#232634; /* borders */
+            --shadow: 0 10px 30px rgba(0,0,0,.35);
+            --radius: 16px;
+            --radius-lg: 20px;
+            --maxw: 1180px;
+        }
+        body.light-theme{
+            --bg:#f0f4f9;
+            --card:#ffffff;
+            --muted:#e2e8f0;
+            --text:#111827;
+            --text-muted:#6b7280;
+            --stroke:#e5e7eb;
+            --shadow: 0 10px 30px rgba(0,0,0,.1);
+        }
+        body.light-theme .btn, body.light-theme .theme-toggle{
+            color: #f0f4f9;
+        }
+        body.light-theme header.nav{
+            background: rgba(240, 244, 249, 0.6);
+        }
+        *{box-sizing:border-box}
+        html,body{margin:0;padding:0; scroll-behavior: smooth;}
+        body{
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+            background: radial-gradient(1200px 600px at 20% -10%, rgba(96,165,250,.15), transparent 40%),
+                        radial-gradient(1000px 500px at 110% -20%, rgba(110,231,183,.12), transparent 40%),
+                        var(--bg);
+            color:var(--text);
+            line-height:1.55;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+        a{color:inherit; text-decoration:none; transition: color 0.3s ease}
+        .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+        header.nav{
+            position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(10px);
+            background:rgba(11,12,15,.6); border-bottom:1px solid var(--stroke);
+            transition: background-color 0.5s ease;
+        }
+        .nav-inner{height:64px; display:flex; align-items:center; justify-content:space-between}
+        .brand{display:flex; align-items:center; gap:12px}
+        .brand img{width:40px; height:40px; border-radius:50%; object-fit:cover}
+        .brand .meta{display:flex; flex-direction:column}
+        .brand .meta small{color:var(--text-muted)}
+        nav.menu{display:none; gap:22px}
+        nav.menu a{font-size:14px; opacity:.9; transition: opacity 0.3s ease, transform 0.3s ease}
+        nav.menu a:hover{opacity:1; text-decoration:underline; text-underline-offset:6px; transform: translateY(-2px)}
+        .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:#0b0c0f; font-weight:600; border:0; transition: transform 0.3s ease, box-shadow 0.3s ease}
+        .btn:hover{transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2)}
+        .btn-outline{background:transparent; color:var(--text); border:1px solid var(--stroke); transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease}
+        .btn-outline:hover{background: rgba(255,255,255,0.05); transform: translateY(-2px)}
+
+        /* theme toggle */
+        .theme-toggle {
+            cursor: pointer;
+            width: 50px;
+            height: 28px;
+            background: var(--muted);
+            border-radius: 999px;
+            position: relative;
+            transition: background-color 0.5s ease;
+            margin-right: 1rem;
+        }
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            transition: transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
+        }
+        .light-theme .theme-toggle::after {
+            transform: translateY(-50%) translateX(22px);
+            background: var(--text);
+        }
+
+        /* hero */
+        .hero{padding:64px 0}
+        .hero-grid{display:grid; grid-template-columns:1fr; gap:28px}
+        .pill{display:inline-block; padding:6px 12px; border-radius:999px; background:var(--muted); color:var(--text-muted); font-size:13px}
+        h1{font-size:40px; line-height:1.1; margin:16px 0 8px}
+        .lead{color:var(--text-muted); font-size:18px}
+        .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center; color:var(--text-muted); font-size:14px; margin-top:14px}
+        .actions{margin-top:22px; display:flex; gap:10px; flex-wrap:wrap}
+        .stats{margin-top:22px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+        .stat{text-align:center}
+        .stat .value{font-size:28px; font-weight:700}
+        .stat .label{font-size:12px; color:var(--text-muted); margin-top:4px}
+        .card{background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius-lg); box-shadow:var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease}
+        .card:hover{transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.25)}
+        .card .media{width:100%; height:auto; object-fit:cover; border-bottom:1px solid var(--stroke); border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+        .card-body{padding:20px}
+        .kvs{display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:14px; color:var(--text-muted)}
+
+        /* sections */
+        section{padding:72px 0}
+        .sec-head{display:flex; align-items:center; gap:12px; margin-bottom:26px}
+        .sec-head .icon{width:36px; height:36px; display:grid; place-items:center; border-radius:12px; background:var(--muted);}
+        .sec-head h2{font-size:28px; margin:0}
+
+        /* grids */
+        .grid-2{display:grid; grid-template-columns:1fr; gap:18px}
+        .grid-3{display:grid; grid-template-columns:1fr; gap:18px}
+        .grid-4{display:grid; grid-template-columns:1fr; gap:14px}
+
+        /* lists & badges */
+        ul.clean{list-style:disc; padding-left:18px; color:var(--text-muted)}
+        .badge{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--stroke); background:var(--muted); color:var(--text)}
+
+        /* experience */
+        .company{display:flex; align-items:center; gap:14px; padding:14px; background:rgba(255,255,255,.02); border:1px solid var(--stroke); border-radius:14px; transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease}
+        .company:hover{transform: translateY(-4px); background:rgba(255,255,255,0.05)}
+        .company img{width:48px; height:48px; border-radius:10px; object-fit:cover}
+        .company small{color:var(--text-muted)}
+
+        /* gallery */
+        .gallery{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+        .gallery img{width:100%; height:220px; object-fit:cover; border-radius:14px; border:1px solid var(--stroke); transition: transform 0.3s ease, opacity 0.3s ease}
+        .gallery img:hover{transform: scale(1.03); opacity: 0.9}
+
+        /* footer */
+        footer{border-top:1px solid var(--stroke); padding:36px 0; color:var(--text-muted)}
+
+        /* responsive */
+        @media (min-width: 860px){
+            nav.menu{display:flex}
+            .hero-grid{grid-template-columns: 1.2fr .8fr}
+            .grid-2{grid-template-columns:2fr 1fr}
+            .grid-3{grid-template-columns:1fr 1fr}
+            .grid-4{grid-template-columns:repeat(4,1fr)}
+            .gallery{grid-template-columns:repeat(4,1fr)}
+        }
+    </style>
+</head>
+<body>
+
+    <header class="nav">
+        <div class="container nav-inner">
+            <div class="brand">
+                <img src="pratham.png" alt="Pratham" />
+                <div class="meta">
+                    <small>Portfolio</small>
+                    <strong>Pratham Suthar</strong>
+                </div>
+            </div>
+            <nav class="menu">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#languages">Languages</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="theme-toggle" id="theme-toggle"></div>
+                <a class="btn btn-outline" href="resume.pdf" download target="_blank" rel="noopener noreferrer">Download Resume</a>
+                <a class="btn" href="#contact">Get in touch</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <span class="pill">Robotics • Manufacturing • Global</span>
+                <h1>Pratham Suthar</h1>
+                <p class="lead">Robotics Engineering Student — Engineering student blending robotics, real-world manufacturing, and global experience.</p>
+                <div class="row">
+                    <span>📍 Hangzhou, China · India</span>
+                    <span style="opacity:.4">|</span>
+                    <span>🎓 Zhejiang University of Science and Technology</span>
+                </div>
+                <div class="actions">
+                    <a class="btn" href="#projects">View Projects</a>
+                    <a class="btn btn-outline" href="#experience">Experience</a>
+                </div>
+                <div class="stats">
+                    <div class="stat"><div class="value">2nd</div><div class="label">Year of Study</div></div>
+                    <div class="stat"><div class="value">5</div><div class="label">Languages</div></div>
+                    <div class="stat"><div class="value">2</div><div class="label">Countries Lived</div></div>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <img class="media" src="pratham.png" alt="Headshot" />
+                    <div class="card-body">
+                        <div class="kvs">
+                            <div>
+                                <div style="font-weight:600">Contact</div>
+                                <div style="margin-top:6px"><a href="mailto:sutharpratham0731@gmail.com" style="color:var(--text-muted); text-decoration:none">📧 sutharpratham0731@gmail.com</a></div>
+                                <div style="margin-top:6px; color:var(--text-muted)">📞 +91-7016003317</div>
+                            </div>
+                            <div>
+                                <div style="font-weight:600">Links</div>
+                                <div style="margin-top:6px"><a href="https://www.linkedin.com/in/pratham-suthar" target="_blank" rel="noreferrer" style="color:var(--text-muted); text-decoration:none">🔗 LinkedIn</a></div>
+                                <div style="margin-top:6px"><a href="https://github.com/Pratham-Suthar" target="_blank" rel="noreferrer" style="color:var(--text-muted); text-decoration:none">💻 GitHub</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="sec-head"><div class="icon">🚀</div><h2>About</h2></div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="margin:0 0 8px">Who I am</h3>
+                        <p style="color:var(--text-muted)">
+                            I am a robotics engineering student who enjoys turning ideas into practical systems. In my first year abroad in China, I adapted quickly, revised my fundamentals, and finished as a top ranker across both semesters. Outside academics, I explored culture and industry through modelling assignments and public service volunteering.
+                        </p>
+                        <ul class="clean">
+                            <li>Top of the batch in Year 1 (two semesters)</li>
+                            <li>Study-abroad immersion in Hangzhou, China</li>
+                            <li>Hands-on contributions to a major Indian manufacturer</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card" id="education">
+                    <div class="card-body">
+                        <h3 style="margin:0 0 8px">🎓 Education</h3>
+                        <strong>Zhejiang University of Science and Technology</strong>
+                        <div class="text-sm" style="color:var(--text-muted)">Hangzhou, China</div>
+                        <div style="margin-top:4px">B.Eng. Robotics Engineering</div>
+                        <div class="text-sm" style="color:var(--text-muted)">2024 – 2028</div>
+                        <hr style="border:0; border-top:1px solid var(--stroke); margin:16px 0"/>
+                        <ul class="clean">
+                            <li>Top ranker for both semesters in Year 1</li>
+                            <li>Strong foundation in mechanics, electronics, control, and programming</li>
+                            <li>Culturally adaptive study-abroad experience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages">
+        <div class="container">
+            <div class="sec-head"><div class="icon">🌐</div><h2>Languages</h2></div>
+            <div class="grid-4">
+                <div class="card"><div class="card-body" style="display:flex; justify-content:space-between; align-items:center"><span>Hindi</span><span class="badge">Fluent</span></div></div>
+                <div class="card"><div class="card-body" style="display:flex; justify-content:space-between; align-items:center"><span>Gujarati</span><span class="badge">Fluent</span></div></div>
+                <div class="card"><div class="card-body" style="display:flex; justify-content:space-between; align-items:center"><span>English</span><span class="badge">Fluent</span></div></div>
+                <div class="card"><div class="card-body" style="display:flex; justify-content:space-between; align-items:center"><span>Chinese</span><span class="badge">Learning</span></div></div>
+                <div class="card"><div class="card-body" style="display:flex; justify-content:space-between; align-items:center"><span>Indonesian</span><span class="badge">Learning</span></div></div>
+            </div>
+            <p style="color:var(--text-muted); margin-top:8px">Currently improving my Chinese and Indonesian alongside my coursework.</p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="sec-head"><div class="icon">🏭</div><h2>Experience</h2></div>
+
+            <div class="company">
+                <img src="UMPL.jpg" alt="Unimaple"/>
+                <div>
+                    <strong>Unimaple Modutech Private Limited</strong><br>
+                    <small>Est. 2012 · Modular furniture (India & International markets)<br>Recently expanded manufacturing unit to 5–10× previous size</small>
+                </div>
+            </div>
+
+            <div class="grid-3" style="margin-top:18px">
+                <div class="card">
+                    <div class="card-body">
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px">
+                            <h3 style="margin:0">🌍 Business & Logistics Support (Winter Break)</h3>
+                            <span class="badge">Jan – Feb 2025</span>
+                        </div>
+                        <div style="color:var(--text-muted); font-size:14px">China · Supported Managing Directors during China visit for exhibitions and procurement.</div>
+                        <ul class="clean" style="margin-top:10px">
+                            <li>Bridged communication with local vendors; assisted in negotiations</li>
+                            <li>Coordinated local and intercity travel; company visits and expo schedules</li>
+                            <li>Early exposure to global manufacturing supply chains</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px">
+                            <h3 style="margin:0">🏭 Engineering Intern (Summer Break)</h3>
+                            <span class="badge">June 27 – Sept 15, 2025</span>
+                        </div>
+                        <div style="color:var(--text-muted); font-size:14px">India · Contributed to safety, organization, and packaging innovation at the newly expanded plant.</div>
+                        <ul class="clean" style="margin-top:10px">
+                            <li>Implemented comprehensive factory floor marking system</li>
+                            <li>Designed & built a foam cutting machine for custom packaging</li>
+                            <li>Enabled smoother setup and long-term operational efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:18px">
+                <div class="card-body">
+                    <h3 style="margin:0 0 8px">Factory Floor Marking System: An Implementation Update</h3>
+                    <p style="color:var(--text-muted); margin-top:8px">
+                        A comprehensive floor marking system was successfully implemented in the new production area. This initiative significantly enhances safety, streamlines logistics, and improves visual management. The system uses a standardized color code to delineate different zones and materials, ensuring a more organized and efficient workflow.
+                    </p>
+                    <ul class="clean" style="margin-top:10px">
+                        <li><strong>Yellow:</strong> Designates pedestrian and vehicle passage areas.</li>
+                        <li><strong>Yellow + White:</strong> Marks specific crossing and passing zones to regulate traffic flow.</li>
+                        <li><strong>Yellow + Black:</strong> Highlights caution areas to alert personnel to potential hazards.</li>
+                        <li><strong>Red + White:</strong> Identifies zones for fire safety equipment, ensuring clear access.</li>
+                        <li><strong>Blue:</strong> Indicates designated areas for raw materials, supporting inventory management.</li>
+                        <li><strong>Green:</strong> Signifies areas for ready-to-go goods, optimizing the dispatch process.</li>
+                        <li><strong>White:</strong> Defines machine boundaries to ensure operational safety and organization.</li>
+                    </ul>
+                    <p style="color:var(--text-muted); margin-top:8px">This system was deployed efficiently within days, reflecting our commitment to maintaining a safe and productive environment.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="sec-head"><div class="icon">🛠️</div><h2>Projects</h2></div>
+            <div class="grid-3">
+                <div class="card" style="overflow:hidden">
+                    <div class="card-body">
+                        <h3 style="margin:0 0 6px">Foam Cutting Machine <span style="color:var(--text-muted); font-weight:400">· 2025</span></h3>
+                        <p style="color:var(--text-muted); margin:0">Low-cost, worker-friendly machine to cut thermocol/foam into custom shapes for protective packaging.</p>
+                        <ul class="clean" style="margin-top:8px">
+                            <li>Concept, design, and workshop fabrication</li>
+                            <li>Improved packaging speed and precision</li>
+                            <li>Reduced manual effort; enabled customizable inserts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <div class="sec-head"><div class="icon">📷</div><h2>Gallery</h2></div>
+            <div class="gallery">
+                <img src="Hall-markings.png" alt="Factory floor markings overview" />
+                <img src="unimaple-vesma.jpg" alt="Production area lanes and zones" />
+                <img src="FCM.png" alt="Foam cutting machine close-up" />
+                <img src="robot.jpg" alt="HAHAHAHA" />
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="sec-head"><div class="icon">✉️</div><h2>Contact</h2></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="grid-3">
+                        <div>
+                            <div style="font-weight:600">Let’s collaborate</div>
+                            <p style="color:var(--text-muted)">I’m keen on internships and projects in robotics, industrial automation, and manufacturing systems.</p>
+                            <div style="display:flex; gap:8px; flex-wrap:wrap">
+                                <span class="badge">Robotics</span>
+                                <span class="badge">Automation</span>
+                                <span class="badge">Industrial Safety</span>
+                                <span class="badge">Mechatronics</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="color:var(--text-muted); font-size:14px">Email</div>
+                            <a href="mailto:sutharpratham0731@gmail.com" style="text-decoration:none; font-weight:600">sutharpratham0731@gmail.com</a>
+                            <div style="color:var(--text-muted); font-size:14px; margin-top:12px">Phone</div>
+                            <div style="font-weight:600">+91-7016003317</div>
+                        </div>
+                        <div>
+                            <div style="color:var(--text-muted); font-size:14px">Links</div>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px">
+                                <a class="btn btn-outline" href="https://www.linkedin.com/in/pratham-suthar/" target="_blank" rel="noreferrer">LinkedIn</a>
+                                <a class="btn btn-outline" href="https://github.com/Pratham-Suthar" target="_blank" rel="noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap">
+            <div>© <span id="year"></span> Pratham Suthar. All rights reserved.</div>
+            <div style="display:flex; gap:18px">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // set year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-theme')) {
+                body.classList.remove('light-theme');
+            } else {
+                body.classList.add('light-theme');
+            }
+        });
+    </script>
+</body>
+</html>
