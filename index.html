@@ -162,7 +162,7 @@
     <header class="nav">
         <div class="container nav-inner">
             <div class="brand">
-                <img src="pratham.png" alt="Pratham" />
+                <img src="PFP.jpg" alt="Pratham" />
                 <div class="meta">
                     <small>Portfolio</small>
                     <strong>Pratham Suthar</strong>
@@ -184,49 +184,85 @@
             </div>
         </div>
     </header>
+        
 
     <section class="hero">
-        <div class="container hero-grid">
+        <div class="container hero-grid" style="padding:60px 40px;">
             <div>
-                <span class="pill">Robotics • Manufacturing • Global</span>
-                <h1>Pratham Suthar</h1>
-                <p class="lead">Robotics Engineering Student — Engineering student blending robotics, real-world manufacturing, and global experience.</p>
-                <div class="row">
-                    <span>📍 Hangzhou, China · India</span>
-                    <span style="opacity:.4">|</span>
-                    <span>🎓 Zhejiang University of Science and Technology</span>
+            <span class="pill" style="font-size:1.2rem; padding:6px 16px;">Robotics • Manufacturing • Global</span>
+            <h1 style="font-size:3rem; margin-top:16px;">Pratham Suthar</h1>
+
+            <!-- Big animated tagline -->
+            <h2 class="animated-text" style="font-size:5rem; font-weight:700; margin-top:20px; line-height:1.2;">
+                <span class="line">I am a</span>
+                <span class="line">Robotics</span>
+                <span class="line">Engineer</span>
+            </h2>
+
+            <div class="row" style="margin-top:28px; font-size:1.2rem;">
+                <span>📍 Hangzhou, China · India</span>
+                <span style="opacity:.4">|</span>
+                <span>🎓 Zhejiang University of Science and Technology</span>
+            </div>
+
+            <div class="actions" style="margin-top:28px;">
+                <a class="btn" href="#projects" style="font-size:1.1rem; padding:12px 24px;">View Projects</a>
+                <a class="btn btn-outline" href="#experience" style="font-size:1.1rem; padding:12px 24px;">Experience</a>
+            </div>
+
+            <div class="stats" style="margin-top:32px; font-size:1.1rem;">
+                <div class="stat"><div class="value">2nd</div><div class="label">Year of Study</div></div>
+                <div class="stat"><div class="value">5</div><div class="label">Languages</div></div>
+                <div class="stat"><div class="value">2</div><div class="label">Countries Lived</div></div>
+            </div>
+            </div>
+
+            <!-- Portrait card -->
+            <div class="card" style="max-width:420px; margin:auto; border-radius:14px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.12); text-align:center;">
+            <img class="media" src="pratham.jpg" alt="Headshot" style="width:100%; height:520px; display:block; object-fit:cover;" />
+
+            <div class="card-body" style="padding:20px;text-align:left; font-size:1.1rem;">
+                <div style="font-weight:600; margin-bottom:10px;">Contact</div>
+                <div style="margin-top:8px;">
+                <a href="mailto:sutharpratham0731@gmail.com" style="color:var(--text-muted); text-decoration:none;">📧 sutharpratham0731@gmail.com</a>
                 </div>
-                <div class="actions">
-                    <a class="btn" href="#projects">View Projects</a>
-                    <a class="btn btn-outline" href="#experience">Experience</a>
+                <div style="margin-top:8px; color:var(--text-muted);">
+                📞 +91-7016003317
                 </div>
-                <div class="stats">
-                    <div class="stat"><div class="value">2nd</div><div class="label">Year of Study</div></div>
-                    <div class="stat"><div class="value">5</div><div class="label">Languages</div></div>
-                    <div class="stat"><div class="value">2</div><div class="label">Countries Lived</div></div>
+
+                <div style="font-weight:600; margin-top:20px;">Links</div>
+                <div style="margin-top:8px;">
+                <a href="https://www.linkedin.com/in/pratham-suthar" target="_blank" rel="noreferrer" style="color:var(--text-muted); text-decoration:none;">🔗 LinkedIn</a>
+                </div>
+                <div style="margin-top:8px;">
+                <a href="https://github.com/Pratham-Suthar" target="_blank" rel="noreferrer" style="color:var(--text-muted); text-decoration:none;">💻 GitHub</a>
                 </div>
             </div>
-            <div>
-                <div class="card">
-                    <img class="media" src="pratham.png" alt="Headshot" />
-                    <div class="card-body">
-                        <div class="kvs">
-                            <div>
-                                <div style="font-weight:600">Contact</div>
-                                <div style="margin-top:6px"><a href="mailto:sutharpratham0731@gmail.com" style="color:var(--text-muted); text-decoration:none">📧 sutharpratham0731@gmail.com</a></div>
-                                <div style="margin-top:6px; color:var(--text-muted)">📞 +91-7016003317</div>
-                            </div>
-                            <div>
-                                <div style="font-weight:600">Links</div>
-                                <div style="margin-top:6px"><a href="https://www.linkedin.com/in/pratham-suthar" target="_blank" rel="noreferrer" style="color:var(--text-muted); text-decoration:none">🔗 LinkedIn</a></div>
-                                <div style="margin-top:6px"><a href="https://github.com/Pratham-Suthar" target="_blank" rel="noreferrer" style="color:var(--text-muted); text-decoration:none">💻 GitHub</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </section>
+        </section>
+
+        <!-- Replace / add these styles -->
+        <style>
+        .animated-text .line {
+        display: block;            /* ensures three lines remain */
+        white-space: pre-wrap;
+        }
+        .animated-text .char {
+        display: inline-block;
+        transition: opacity 0.35s ease, color 0.35s ease, transform 0.35s ease;
+        will-change: opacity, transform, color;
+        }
+        </style>
+
+
+        <style>
+        .animated-text .line {
+            display: block;
+            transition: all 0.5s ease;
+        }
+        </style>
+
 
     <section id="about">
         <div class="container">
