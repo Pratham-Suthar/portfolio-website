@@ -139,9 +139,39 @@
         .company small{color:var(--text-muted)}
 
         /* gallery */
-        .gallery{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-        .gallery img{width:100%; height:220px; object-fit:cover; border-radius:14px; border:1px solid var(--stroke); transition: transform 0.3s ease, opacity 0.3s ease}
-        .gallery img:hover{transform: scale(1.03); opacity: 0.9}
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 images per row on desktop */
+            gap: 20px;
+            }
+
+            .gallery-grid img {
+            width: 100%;
+            height: 250px;           /* uniform height */
+            object-fit: cover;       /* keeps proportions, crops nicely */
+            border-radius: 12px;     /* smooth professional corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            }
+
+            /* Responsive Layout */
+            @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+            }
+            }
+
+            @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr; /* 1 per row on mobile */
+            }
+        }
 
         /* footer */
         footer{border-top:1px solid var(--stroke); padding:36px 0; color:var(--text-muted)}
@@ -229,6 +259,9 @@
                 <div style="margin-top:8px; color:var(--text-muted);">
                 📞 +91-7016003317
                 </div>
+                <div style="margin-top:8px; color:var(--text-muted);">
+                📞 +86-19560410454
+                </div>
 
                 <div style="font-weight:600; margin-top:20px;">Links</div>
                 <div style="margin-top:8px;">
@@ -286,7 +319,7 @@
                         <h3 style="margin:0 0 8px">🎓 Education</h3>
                         <strong>Zhejiang University of Science and Technology</strong>
                         <div class="text-sm" style="color:var(--text-muted)">Hangzhou, China</div>
-                        <div style="margin-top:4px">B.Eng. Robotics Engineering</div>
+                        <div style="margin-top:4px">Robotics Engineering</div>
                         <div class="text-sm" style="color:var(--text-muted)">2024 – 2028</div>
                         <hr style="border:0; border-top:1px solid var(--stroke); margin:16px 0"/>
                         <ul class="clean">
@@ -399,17 +432,33 @@
         </div>
     </section>
 
-    <section id="gallery">
+        <!-- Gallery Section -->
+   <!-- Gallery Section -->
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
         <div class="container">
-            <div class="sec-head"><div class="icon">📷</div><h2>Gallery</h2></div>
-            <div class="gallery">
-                <img src="Hall-markings.png" alt="Factory floor markings overview" />
-                <img src="unimaple-vesma.jpg" alt="Production area lanes and zones" />
-                <img src="FCM.png" alt="Foam cutting machine close-up" />
-                <img src="robot.jpg" alt="HAHAHAHA" />
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid">
+            <!-- Row 1 -->
+            <img src="FCM.png" alt="Gallery Image 1">
+            <img src="robot.jpg" alt="Gallery Image 2">
+            <img src="Hall-markings.png" alt="Gallery Image 3">
+
+            <!-- Row 2 -->
+            <img src="pathway_marking.jpg" alt="Gallery Image 4">
+            <img src="store_marking.jpg" alt="Gallery Image 5">
+            <img src="door_marking.jpg" alt="Gallery Image 6">
+
+            <!-- Row 3 -->
+            <img src="moving_troley_marking.jpg" alt="Gallery Image 7">
+            <img src="trolley_marking.jpg" alt="Gallery Image 8">
+            <img src="r_w.jpg" alt="Gallery Image 9">
             </div>
         </div>
-    </section>
+    </section>  
+
+
+
 
     <section id="contact">
         <div class="container">
@@ -432,6 +481,7 @@
                             <a href="mailto:sutharpratham0731@gmail.com" style="text-decoration:none; font-weight:600">sutharpratham0731@gmail.com</a>
                             <div style="color:var(--text-muted); font-size:14px; margin-top:12px">Phone</div>
                             <div style="font-weight:600">+91-7016003317</div>
+                            <div style="font-weight:600">+86-19560410454</div>
                         </div>
                         <div>
                             <div style="color:var(--text-muted); font-size:14px">Links</div>
@@ -475,4 +525,3 @@
     </script>
 </body>
 </html>
-
